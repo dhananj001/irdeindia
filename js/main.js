@@ -64,7 +64,7 @@ function initSmoothScroll() {
   const navLinks = document.querySelectorAll('.nav-links a');
 
   const onScroll = () => {
-    const scrollPos = window.scrollY + 120;
+    const scrollPos = window.scrollY + 160;
 
     sections.forEach(section => {
       const top = section.offsetTop;

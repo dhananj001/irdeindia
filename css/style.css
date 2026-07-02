@@ -53,7 +53,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 120px;
+  scroll-padding-top: 160px; /* Increased to match new header height */
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -299,7 +299,9 @@ button, input, textarea, select {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
+  height: 120px; /* Increased from 100px to 120px */
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .main-header {
@@ -321,12 +323,15 @@ button, input, textarea, select {
 .logo-area {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
 }
 
 .logo-img {
-  height: 48px;
+  height: 112px; /* Increased from 92px to 112px */
   width: auto;
+  max-height: 100%;
+  object-fit: contain;
+  transition: var(--transition-smooth);
 }
 
 .logo-text-group {
@@ -336,16 +341,17 @@ button, input, textarea, select {
 
 .logo-title {
   font-family: var(--font-heading);
-  font-size: 1.35rem;
+  font-size: 2.2rem; /* Increased from 1.9rem to 2.2rem */
   font-weight: 900;
   color: var(--color-primary);
   line-height: 1;
+  letter-spacing: 0.5px;
 }
 
 .logo-subtitle {
-  font-size: 0.65rem;
+  font-size: 0.65rem; /* Reduced to make it clean and small */
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
   color: var(--color-text-muted);
   font-weight: 600;
   margin-top: 2px;
@@ -396,8 +402,13 @@ button, input, textarea, select {
   cursor: pointer;
   flex-direction: column;
   justify-content: space-between;
-  width: 22px;
-  height: 16px;
+  width: 24px;
+  height: 18px;
+  position: relative;
+  z-index: 1010;
+  padding: 10px; /* Expands touch target */
+  margin: -10px; /* Offsets visual displacement */
+  box-sizing: content-box;
 }
 
 .menu-toggle .bar {
@@ -415,7 +426,7 @@ button, input, textarea, select {
   
   .nav-menu {
     position: absolute;
-    top: 80px;
+    top: 88px; /* Matches new mobile header height (88px) */
     left: 0;
     right: 0;
     background-color: var(--color-bg);
@@ -441,7 +452,7 @@ button, input, textarea, select {
   }
   
   .menu-toggle.open .bar:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
   }
   
   .menu-toggle.open .bar:nth-child(2) {
@@ -449,7 +460,52 @@ button, input, textarea, select {
   }
   
   .menu-toggle.open .bar:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .header-container {
+    height: 88px; /* Increased from 84px to 88px */
+    padding: 0 16px;
+  }
+
+  .logo-img {
+    height: 80px; /* Increased from 76px to 80px */
+  }
+
+  .logo-title {
+    font-size: 1.6rem; /* Increased from 1.5rem to 1.6rem */
+  }
+
+  .logo-subtitle {
+    font-size: 0.58rem; /* Small font size fits on mobile without wrapping */
+    letter-spacing: 0.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    height: 72px;
+    padding: 0 12px;
+  }
+
+  .logo-area {
+    gap: 10px;
+  }
+
+  .logo-img {
+    height: 64px;
+  }
+
+  .logo-title {
+    font-size: 1.45rem; /* Large and readable brand name */
+  }
+
+  .logo-subtitle {
+    display: none; /* Hide subtitle on tiny mobile to avoid any overflow and maximize space */
+  }
+
+  .nav-menu {
+    top: 72px; /* Matches extra small mobile header height (72px) */
   }
 }
 
