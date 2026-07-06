@@ -589,6 +589,12 @@ button, input, textarea, select {
   width: 100%;
   height: auto;
   object-fit: cover;
+  cursor: pointer;
+  transition: transform var(--transition-smooth);
+}
+
+.hero-image-frame img:hover {
+  transform: scale(1.02);
 }
 
 /* Editorial Frame Background */
