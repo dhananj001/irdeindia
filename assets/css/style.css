@@ -1604,24 +1604,168 @@ button, input, textarea, select {
 }
 
 /* -------------------------------------------------------------
- * DONATION SECTION
+ * DONATION SECTION & MODAL
  * ------------------------------------------------------------- */
-.donate-section {
-  background-color: var(--color-bg);
+.donate-cta-section {
+  background-color: var(--color-primary-glow);
   border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 }
 
+.donate-cta-card {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-smooth);
+}
+
+.donate-cta-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-secondary);
+}
+
+.donate-cta-content {
+  flex: 1;
+}
+
+.donate-cta-content h2.section-title {
+  margin-bottom: 10px;
+  text-align: left;
+  font-size: 1.8rem;
+}
+
+.donate-cta-content .section-subtitle {
+  margin-bottom: 0;
+  text-align: left;
+  max-width: 100%;
+}
+
+.donate-cta-action {
+  flex-shrink: 0;
+}
+
+.donate-cta-action .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  padding: 14px 28px;
+}
+
+@media (max-width: 768px) {
+  .donate-cta-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 24px;
+  }
+  .donate-cta-content h2.section-title,
+  .donate-cta-content .section-subtitle {
+    text-align: center;
+  }
+  .donate-cta-action {
+    width: 100%;
+  }
+  .donate-cta-action .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Donation Modal structure */
+.donation-modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(30, 30, 30, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition-smooth);
+  padding: 20px;
+}
+
+.donation-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.donation-modal-content {
+  background-color: var(--color-bg);
+  border-radius: var(--radius-lg);
+  max-width: 860px;
+  width: 100%;
+  max-height: 95vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(20px);
+  opacity: 0;
+  transition: var(--transition-smooth);
+}
+
+.donation-modal.active .donation-modal-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.donation-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-size: 1.8rem;
+  line-height: 1;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: var(--transition-fast);
+}
+
+.donation-modal-close:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-text-light);
+  border-color: var(--color-secondary);
+}
+
+.donation-modal-body {
+  padding: 24px 30px;
+}
+
+@media (max-width: 576px) {
+  .donation-modal-body {
+    padding: 20px 15px;
+  }
+}
+
+/* Grid & Cards within Modal */
 .donate-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 40px;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 24px;
   align-items: stretch;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 768px) {
   .donate-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 20px;
   }
 }
 
@@ -1629,24 +1773,18 @@ button, input, textarea, select {
   background-color: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  padding: 40px;
+  padding: 20px 24px;
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-@media (max-width: 576px) {
-  .donate-info-card {
-    padding: 24px;
-  }
-}
-
 .donate-card-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 .donate-header-icon {
@@ -1655,36 +1793,36 @@ button, input, textarea, select {
 
 .donate-card-header h3 {
   font-family: var(--font-heading);
-  font-size: 1.35rem;
+  font-size: 1.2rem;
   color: var(--color-primary);
   font-weight: 700;
 }
 
 .donate-card-desc {
   color: var(--color-text-muted);
-  font-size: 0.92rem;
-  margin-bottom: 24px;
-  line-height: 1.5;
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+  line-height: 1.4;
 }
 
 .donate-details-table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 24px;
+  margin-bottom: 15px;
 }
 
 .donate-details-table th,
 .donate-details-table td {
-  padding: 14px 0;
+  padding: 8px 0;
   border-bottom: 1px solid var(--color-border);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   text-align: left;
 }
 
 .donate-details-table th {
   color: var(--color-text-muted);
   font-weight: 700;
-  width: 30%;
+  width: 32%;
   vertical-align: top;
 }
 
@@ -1696,19 +1834,19 @@ button, input, textarea, select {
 .vpa-copy-wrapper {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
 .vpa-id {
   font-family: monospace;
   background-color: var(--color-bg-alt);
-  padding: 4px 8px;
+  padding: 3px 6px;
   border-radius: var(--radius-sm);
   font-weight: 600;
   color: var(--color-primary);
   border: 1px solid var(--color-border);
-  font-size: 0.95rem;
+  font-size: 0.85rem;
 }
 
 .vpa-copy-btn {
@@ -1718,10 +1856,10 @@ button, input, textarea, select {
   background: none;
   border: 1px solid var(--color-border);
   color: var(--color-text-muted);
-  padding: 4px 8px;
+  padding: 3px 6px;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
   transition: var(--transition-fast);
 }
@@ -1737,38 +1875,29 @@ button, input, textarea, select {
   background-color: rgba(31, 77, 58, 0.08);
   color: var(--color-primary);
   font-weight: 700;
-  font-size: 0.72rem;
-  padding: 3px 8px;
+  font-size: 0.65rem;
+  padding: 2px 6px;
   border-radius: var(--radius-sm);
   text-transform: uppercase;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .tax-note {
   display: block;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--color-text-muted);
   font-weight: normal;
-  margin-top: 2px;
 }
 
 .donate-actions {
-  display: flex;
-  gap: 16px;
-  margin-top: 10px;
-}
-
-.donate-actions .btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  margin-top: 5px;
 }
 
 .donate-qr-card {
   background-color: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  padding: 40px;
+  padding: 20px 24px;
   box-shadow: var(--shadow-sm);
   text-align: center;
   display: flex;
@@ -1777,41 +1906,34 @@ button, input, textarea, select {
   justify-content: center;
 }
 
-@media (max-width: 576px) {
-  .donate-qr-card {
-    padding: 24px;
-  }
-}
-
 .qr-container {
   background: #FFF;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  padding: 16px;
+  padding: 10px;
   display: inline-block;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   box-shadow: var(--shadow-sm);
 }
 
 .qr-code-img {
-  max-width: 180px;
+  max-width: 165px;
   height: auto;
   display: block;
-  margin: 0 auto 12px;
+  margin: 0 auto 8px;
 }
 
 .qr-brand-row {
   display: flex;
   justify-content: center;
-  gap: 6px;
-  flex-wrap: wrap;
+  gap: 4px;
 }
 
 .qr-brand-badge {
-  font-size: 0.65rem;
+  font-size: 0.58rem;
   font-weight: 700;
-  padding: 2px 6px;
-  border-radius: 3px;
+  padding: 1px 4px;
+  border-radius: 2px;
   border: 1px solid #ddd;
 }
 
@@ -1822,26 +1944,27 @@ button, input, textarea, select {
 
 .qr-info h4 {
   font-family: var(--font-heading);
-  font-size: 1.15rem;
+  font-size: 1rem;
   color: var(--color-primary);
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   font-weight: 700;
 }
 
 .qr-info p {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   color: var(--color-text-muted);
-  margin-bottom: 20px;
-  line-height: 1.5;
-  max-width: 260px;
+  margin-bottom: 12px;
+  line-height: 1.35;
+  max-width: 200px;
 }
 
 .upi-pay-btn {
   display: none;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   width: 100%;
+  font-size: 0.85rem;
 }
 
 @media (max-width: 768px) {

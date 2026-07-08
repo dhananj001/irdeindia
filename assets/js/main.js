@@ -490,35 +490,78 @@ function initContactForm() {
 }
 
 /* -------------------------------------------------------------
- * DONATION VPA COPY FUNCTIONALITY
+ * DONATION MODAL & VPA COPY FUNCTIONALITY
  * ------------------------------------------------------------- */
 function initDonation() {
+  const modal = document.getElementById('donationModal');
+  const openBtn = document.getElementById('openDonateModalBtn');
+  const closeBtn = document.getElementById('closeDonateModalBtn');
+  
+  if (!modal) return;
+
+  const openModal = (e) => {
+    if (e) e.preventDefault();
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  // Open modal triggers
+  if (openBtn) {
+    openBtn.addEventListener('click', openModal);
+  }
+
+  // Hook navigation Donate link to trigger modal directly
+  const navDonateLinks = document.querySelectorAll('a[href="#donate"]');
+  navDonateLinks.forEach(link => {
+    link.addEventListener('click', openModal);
+  });
+
+  // Close modal triggers
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+  // Copy VPA text functionality
   const copyBtn = document.getElementById('copyVpaBtn');
   const vpaText = document.getElementById('vpaId');
-  if (!copyBtn || !vpaText) return;
-
-  copyBtn.addEventListener('click', () => {
-    const textToCopy = vpaText.textContent.trim();
-    navigator.clipboard.writeText(textToCopy).then(() => {
-      // Success feedback
-      const originalHTML = copyBtn.innerHTML;
-      copyBtn.innerHTML = `
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-          <path d="M5 13l4 4L19 7" />
-        </svg>
-        <span>Copied!</span>
-      `;
-      copyBtn.style.borderColor = 'var(--color-primary)';
-      copyBtn.style.color = 'var(--color-primary)';
-      
-      setTimeout(() => {
-        copyBtn.innerHTML = originalHTML;
-        copyBtn.style.borderColor = '';
-        copyBtn.style.color = '';
-      }, 2000);
-    }).catch(err => {
-      console.error('Failed to copy: ', err);
+  if (copyBtn && vpaText) {
+    copyBtn.addEventListener('click', () => {
+      const textToCopy = vpaText.textContent.trim();
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const originalHTML = copyBtn.innerHTML;
+        copyBtn.innerHTML = `
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path d="M5 13l4 4L19 7" />
+          </svg>
+          <span>Copied!</span>
+        `;
+        copyBtn.style.borderColor = 'var(--color-primary)';
+        copyBtn.style.color = 'var(--color-primary)';
+        
+        setTimeout(() => {
+          copyBtn.innerHTML = originalHTML;
+          copyBtn.style.borderColor = '';
+          copyBtn.style.color = '';
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
     });
-  });
+  }
 }
 
