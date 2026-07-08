@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPortfolio();
   initLightbox();
   initFacebookWidget();
+  initContactForm();
 });
 
 /* -------------------------------------------------------------
@@ -392,5 +393,98 @@ function initFacebookWidget() {
   window.addEventListener('resize', adjustScale);
   window.addEventListener('load', adjustScale);
   adjustScale();
+}
+
+/* -------------------------------------------------------------
+ * CONTACT FORM SUBMISSION (WEB3FORMS)
+ * ------------------------------------------------------------- */
+function initContactForm() {
+  const form = document.getElementById('form');
+  if (!form) return;
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    formData.append("access_key", "dd9ddd50-d2e8-4e4b-af97-942af6b184cb");
+    formData.append("from_name", "IRDE Website Contact Form");
+    formData.append("reply_to", formData.get("email"));
+    formData.append("subject", `New Web Inquiry: ${formData.get("subject")}`);
+
+    const originalHTML = submitBtn.innerHTML;
+
+    submitBtn.innerHTML = "Sending...";
+    submitBtn.disabled = true;
+
+    try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            const card = form.closest('.contact-form-card');
+            if (card) {
+                form.animate([
+                    { opacity: 1, transform: 'translateY(0)' },
+                    { opacity: 0, transform: 'translateY(-10px)' }
+                ], {
+                    duration: 250,
+                    easing: 'ease-in-out',
+                    fill: 'forwards'
+                }).onfinish = () => {
+                    card.innerHTML = `
+                      <div class="thank-you-card" style="text-align: center; padding: 40px 10px; opacity: 0; transform: translateY(10px);">
+                        <div style="
+                          width: 64px;
+                          height: 64px;
+                          background-color: var(--color-primary-glow);
+                          border: 2px solid var(--color-secondary);
+                          border-radius: 50%;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          margin: 0 auto 20px;
+                          color: var(--color-secondary);
+                          font-size: 1.8rem;
+                          box-shadow: 0 4px 12px var(--color-secondary-glow);
+                        ">✓</div>
+                        <h3 style="color: var(--color-primary); font-size: 1.4rem; margin-bottom: 10px; font-family: var(--font-heading); font-weight: 700;">Message Sent!</h3>
+                        <p style="color: var(--color-text-muted); font-size: 0.9rem; line-height: 1.6; max-width: 290px; margin: 0 auto 20px;">
+                          Thank you for reaching out. We have received your inquiry and will respond to you shortly.
+                        </p>
+                        <div style="border-top: 1px dashed var(--color-border); padding-top: 15px; font-size: 0.75rem; color: var(--color-text-muted);">
+                          Confirmation routed to the IRDE executive board.
+                        </div>
+                      </div>
+                    `;
+                    
+                    const thankYouCard = card.querySelector('.thank-you-card');
+                    if (thankYouCard) {
+                        thankYouCard.animate([
+                            { opacity: 0, transform: 'translateY(10px)' },
+                            { opacity: 1, transform: 'translateY(0)' }
+                        ], {
+                            duration: 350,
+                            easing: 'ease-out',
+                            fill: 'forwards'
+                        });
+                    }
+                };
+            }
+        } else {
+            alert("Error: " + data.message);
+        }
+
+    } catch (error) {
+        alert("Something went wrong. Please try again.");
+    } finally {
+        submitBtn.innerHTML = originalHTML;
+        submitBtn.disabled = false;
+    }
+  });
 }
 
