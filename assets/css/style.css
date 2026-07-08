@@ -1604,6 +1604,253 @@ button, input, textarea, select {
 }
 
 /* -------------------------------------------------------------
+ * DONATION SECTION
+ * ------------------------------------------------------------- */
+.donate-section {
+  background-color: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+}
+
+.donate-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: stretch;
+}
+
+@media (max-width: 992px) {
+  .donate-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+.donate-info-card {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 40px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (max-width: 576px) {
+  .donate-info-card {
+    padding: 24px;
+  }
+}
+
+.donate-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.donate-header-icon {
+  color: var(--color-secondary);
+}
+
+.donate-card-header h3 {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.donate-card-desc {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.donate-details-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+}
+
+.donate-details-table th,
+.donate-details-table td {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.donate-details-table th {
+  color: var(--color-text-muted);
+  font-weight: 700;
+  width: 30%;
+  vertical-align: top;
+}
+
+.donate-details-table td {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.vpa-copy-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.vpa-id {
+  font-family: monospace;
+  background-color: var(--color-bg-alt);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+  font-size: 0.95rem;
+}
+
+.vpa-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: var(--transition-fast);
+}
+
+.vpa-copy-btn:hover {
+  background-color: var(--color-primary-glow);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.tax-badge {
+  display: inline-block;
+  background-color: rgba(31, 77, 58, 0.08);
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.72rem;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.tax-note {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-weight: normal;
+  margin-top: 2px;
+}
+
+.donate-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.donate-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.donate-qr-card {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 40px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 576px) {
+  .donate-qr-card {
+    padding: 24px;
+  }
+}
+
+.qr-container {
+  background: #FFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: inline-block;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.qr-code-img {
+  max-width: 180px;
+  height: auto;
+  display: block;
+  margin: 0 auto 12px;
+}
+
+.qr-brand-row {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.qr-brand-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+}
+
+.qr-brand-badge.gpay { color: #4285F4; background-color: #f1f3f4; }
+.qr-brand-badge.phonepe { color: #5f259f; background-color: #f5effc; }
+.qr-brand-badge.paytm { color: #00b9f5; background-color: #eaf9fe; }
+.qr-brand-badge.bhim { color: #e47911; background-color: #fdf5ea; }
+
+.qr-info h4 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.qr-info p {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  margin-bottom: 20px;
+  line-height: 1.5;
+  max-width: 260px;
+}
+
+.upi-pay-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .upi-pay-btn {
+    display: inline-flex;
+  }
+}
+
+/* -------------------------------------------------------------
  * CONTACT SECTION
  * ------------------------------------------------------------- */
 .contact-section {

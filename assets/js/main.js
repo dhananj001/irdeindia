@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLightbox();
   initFacebookWidget();
   initContactForm();
+  initDonation();
 });
 
 /* -------------------------------------------------------------
@@ -485,6 +486,39 @@ function initContactForm() {
         submitBtn.innerHTML = originalHTML;
         submitBtn.disabled = false;
     }
+  });
+}
+
+/* -------------------------------------------------------------
+ * DONATION VPA COPY FUNCTIONALITY
+ * ------------------------------------------------------------- */
+function initDonation() {
+  const copyBtn = document.getElementById('copyVpaBtn');
+  const vpaText = document.getElementById('vpaId');
+  if (!copyBtn || !vpaText) return;
+
+  copyBtn.addEventListener('click', () => {
+    const textToCopy = vpaText.textContent.trim();
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      // Success feedback
+      const originalHTML = copyBtn.innerHTML;
+      copyBtn.innerHTML = `
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path d="M5 13l4 4L19 7" />
+        </svg>
+        <span>Copied!</span>
+      `;
+      copyBtn.style.borderColor = 'var(--color-primary)';
+      copyBtn.style.color = 'var(--color-primary)';
+      
+      setTimeout(() => {
+        copyBtn.innerHTML = originalHTML;
+        copyBtn.style.borderColor = '';
+        copyBtn.style.color = '';
+      }, 2000);
+    }).catch(err => {
+      console.error('Failed to copy: ', err);
+    });
   });
 }
 
