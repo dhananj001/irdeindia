@@ -199,7 +199,7 @@ function initAimsSubtabs() {
 /* -------------------------------------------------------------
  * IMPACT PORTFOLIO IMAGES GENERATION
  * ------------------------------------------------------------- */
-const basePath = './Institute Of Rural Development and Education (IRDE)_files/';
+const basePath = './assets/images/';
 
 const portfolioImages = {
   scientists: [
