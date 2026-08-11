@@ -20,6 +20,9 @@
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="./assets/css/style.css">
+  
+  <!-- Fancybox 5 Lightbox CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
 
   <!-- Favicon -->
   <link rel="icon" href="./assets/images/irdelogoshort.png" type="image/png">
@@ -64,7 +67,7 @@
           <li><a href="#impact">Areas of Impact</a></li>
           <li><a href="#timeline">Our Legacy</a></li>
           <li><a href="#programs">Programs</a></li>
-          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
           <li><a href="#donate">Donate</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -686,10 +689,9 @@
   <section id="gallery" class="gallery-section section-padding">
     <div class="container">
       <div class="text-center">
-        <span class="section-badge">Gallery</span>
-        <h2 class="section-title">Latest Activities & Field Gallery</h2>
-        <p class="section-subtitle">Real moments captured during our field camps, student workshops, and farmer
-          coordination meets.</p>
+        <span class="section-badge">Gallery Highlights</span>
+        <h2 class="section-title">Key Field Highlights & Event Moments</h2>
+        <p class="section-subtitle">Featured moments from our recent field trials, Super Cane demonstrations, SPPU lectures, and rural welfare initiatives.</p>
       </div>
 
       <div class="gallery-layout">
@@ -704,6 +706,7 @@
         <div class="portfolio-wrapper">
           <div class="portfolio-filter">
             <button class="filter-btn active" data-filter="all">All Photos</button>
+            <button class="filter-btn" data-filter="recent">Recent Demos & Lectures</button>
             <button class="filter-btn" data-filter="scientists">Scientists</button>
             <button class="filter-btn" data-filter="education">Education</button>
             <button class="filter-btn" data-filter="citizens">Senior Citizens</button>
@@ -718,12 +721,17 @@
           <!-- Activities Report Callout -->
           <div class="report-download-box">
             <div>
-              <h4>Looking for more detailed records?</h4>
-              <p>Download the compiled field report detailing our complete history of lectures and workshops.</p>
+              <h4>Explore Complete Photo Archive & Field Records</h4>
+              <p>View our full gallery of 70+ field demonstrations, farmer workshops, and university lectures.</p>
             </div>
-            <a href="./assets/docs/activities.pdf" target="_blank" class="btn btn-outline-gold btn-sm">
-              Download Activities Report (PDF)
-            </a>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <a href="gallery.html" class="btn btn-secondary btn-sm">
+                View Full Photo Gallery &rarr;
+              </a>
+              <a href="./assets/docs/activities.pdf" target="_blank" class="btn btn-outline-gold btn-sm">
+                Download Activities Report (PDF)
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -991,6 +999,8 @@
     </div>
   </footer>
 
+  <!-- Fancybox 5 Lightbox Script -->
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
   <!-- Main Interactivity Script -->
   <script src="./assets/js/main.js"></script>
   <script>

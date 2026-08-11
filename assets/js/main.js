@@ -4,13 +4,14 @@
  * ------------------------------------------------------------- */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initLightbox(); // Initialize fallback modal first
   initNavbarScroll();
   initMobileMenu();
   initSmoothScroll();
   initTabs();
   initAimsSubtabs();
   initPortfolio();
-  initLightbox();
+  initFullGalleryPage();
   initFacebookWidget();
   initContactForm();
   initDonation();
@@ -202,19 +203,56 @@ function initAimsSubtabs() {
  * IMPACT PORTFOLIO IMAGES GENERATION
  * ------------------------------------------------------------- */
 const basePath = './assets/images/';
+const gallery002Path = `${basePath}gallery002/`;
+
+const gallery002Images = [
+  { src: `${gallery002Path}Bumper crop of Soyabean using Soya Sanjivani.png`, title: 'Bumper Crop of Soyabean', desc: 'Soya Sanjivani Demonstration Plot' },
+  { src: `${gallery002Path}Demonstration of intercrop farming using Dragon Fruit and Grapes at Jat dist Sangali.png`, title: 'Dragon Fruit & Grapes Intercropping', desc: 'Jat Dist. Sangli Demonstration' },
+  { src: `${gallery002Path}Sugarcane sanjivani.png`, title: 'Sugarcane Sanjivani Trial', desc: 'Sustainable Sugarcane Farming' },
+  { src: `${gallery002Path}groupphoto.png`, title: 'IRDE Team & Farmer Delegation', desc: 'Field Workshop & Group Session' },
+  { src: `${gallery002Path}poster.png`, title: 'IRDE Rural Extension Services', desc: 'Educational & Agricultural Initiatives' },
+  { src: `${gallery002Path}जेष्ठ नागरीक विख्यान माला मार्च 2025 001.png`, title: 'Jyeshtha Nagarik Vyakhyanmala', desc: 'Senior Citizen Lecture Series (March 2025)' },
+  { src: `${gallery002Path}जेष्ठ नागरीक विख्यान माला मार्च 2025 002.png`, title: 'Senior Citizen Interactive Session', desc: 'Jyeshtha Nagarik Program (March 2025)' },
+  { src: `${gallery002Path}डॉ बाबासाहेब जयकर व्याख्यानमाला  नोव्हेंबर 2024 007.png`, title: 'Dr. Babasaheb Jayakar Vyakhyanmala', desc: 'SPPU Extra-Mural Lecture (Nov 2024)' },
+  { src: `${gallery002Path}डॉ बाबासाहेब जयकर व्याख्यानमाला  नोव्हेंबर 2024. 001.png`, title: 'Dr. Jayakar Seminar Address', desc: 'Rural Education Drive (Nov 2024)' },
+  { src: `${gallery002Path}डॉ बाबासाहेब जयकर व्याख्यानमाला  नोव्हेंबर 2024. 003.png`, title: 'Dr. Jayakar Student Interactive Session', desc: 'SPPU Collaboration (Nov 2024)' },
+  { src: `${gallery002Path}डॉ बाबासाहेब जयकर व्याख्यानमाला  नोव्हेंबर 2024. 004.png`, title: 'Dignitaries at Jayakar Seminar', desc: 'Extra-Mural Studies (Nov 2024)' },
+  { src: `${gallery002Path}डॉ बाबासाहेब जयकर व्याख्यानमाला  नोव्हेंबर 2024. 006.png`, title: 'Jayakar Lecture Gathering', desc: 'Community Knowledge Drive (Nov 2024)' },
+  { src: `${gallery002Path}डॉ. जमदग्नी यांनी सुपर केन नर्सरी तंत्रज्ञानाने तयार केलेली उसाची रोपे 002.png`, title: 'Super Cane Nursery Seedlings', desc: 'Tech Demo by Dr. Jamadagni (02)' },
+  { src: `${gallery002Path}डॉ. जमदग्नी यांनी सुपर केन नर्सरी तंत्रज्ञानाने तयार केलेली उसाची रोपे001.png`, title: 'Super Cane Nursery Seedlings', desc: 'Tech Demo by Dr. Jamadagni (01)' },
+  { src: `${gallery002Path}नॅनो युरिया नॅनो डीएपी डिमॉन्स्ट्रेशन प्लॉट 001.png`, title: 'Nano Urea & Nano DAP Trial', desc: 'Demonstration Plot (01)' },
+  { src: `${gallery002Path}नॅनो युरिया नॅनो डीएपी डिमॉन्स्ट्रेशन प्लॉट 002.png`, title: 'Nano Fertilizer Crop Results', desc: 'Demonstration Plot (02)' },
+  { src: `${gallery002Path}Punyashlok Ahilya Devi Holkar Vyakhyanmala Feb 2026 002.png`, title: 'Ahilya Devi Holkar Vyakhyanmala', desc: 'Women College Lecture (Feb 2026)' },
+  { src: `${gallery002Path}विद्यार्थ्यांसाठी सावित्रीबाई फुले पुणे विद्यापीठ यांच्या सह योगाने  यशवंतराव चव्हाण व्याख्यानमाला जानेवारी 2026.png`, title: 'Yashwantrao Chavan Vyakhyanmala', desc: 'SPPU Youth Seminar (Jan 2026)' }
+];
 
 const portfolioImages = {
+  recent: gallery002Images,
   scientists: [
     { src: `${basePath}1.jpg`, title: 'Agricultural Scientists Interaction', desc: 'Farmers and Scientists Meetup' },
     { src: `${basePath}2.jpg`, title: 'Agri Innovation Seminar', desc: 'Expert Lecture on Soil Health' },
-    { src: `${basePath}3.jpg`, title: 'Scientists Workshop', desc: 'Field Demonstration Session' }
+    { src: `${basePath}3.jpg`, title: 'Scientists Workshop', desc: 'Field Demonstration Session' },
+    gallery002Images[0], // Soyabean
+    gallery002Images[1], // Dragon Fruit
+    gallery002Images[2], // Sugarcane Sanjivani
+    gallery002Images[12], // Super Cane
+    gallery002Images[14]  // Nano Urea
   ],
-  education: Array.from({ length: 13 }, (_, i) => ({
-    src: `${basePath}edu_${i + 1}.jpg`,
-    title: `Education Initiative ${i + 1}`,
-    desc: 'Bahishal Shikshan Mandal Lecture Series'
-  })),
+  education: [
+    gallery002Images[7], // Jayakar 007
+    gallery002Images[8], // Jayakar 001
+    gallery002Images[9], // Jayakar 003
+    gallery002Images[16], // Ahilya Devi
+    gallery002Images[17], // Yashwantrao Chavan
+    ...Array.from({ length: 13 }, (_, i) => ({
+      src: `${basePath}edu_${i + 1}.jpg`,
+      title: `Education Initiative ${i + 1}`,
+      desc: 'Bahishal Shikshan Mandal Lecture Series'
+    }))
+  ],
   citizens: [
+    gallery002Images[5], // Jyeshtha Nagarik 001
+    gallery002Images[6], // Jyeshtha Nagarik 002
     { src: `${basePath}1(1).jpg`, title: 'Senior Citizen Forum', desc: 'Will Writing Program' },
     { src: `${basePath}2(1).jpg`, title: 'Dignitaries Address', desc: 'Inaugural Session' },
     { src: `${basePath}3(1).jpg`, title: 'Advisory Panel Meet', desc: 'Planning and Strategy' },
@@ -225,6 +263,8 @@ const portfolioImages = {
     }))
   ],
   villagers: [
+    gallery002Images[3], // Group Photo
+    gallery002Images[4], // Poster
     { src: `${basePath}1(2).jpg`, title: 'Villagers Assembly', desc: 'Community Training Program' },
     { src: `${basePath}2(2).jpg`, title: 'Farmer Interaction', desc: 'Soya Cultivation Program' },
     { src: `${basePath}3(2).jpg`, title: 'Women SHG Training', desc: 'Financial Literacy Shibir' },
@@ -233,6 +273,8 @@ const portfolioImages = {
     { src: `${basePath}6(1).jpg`, title: 'Rural Development Meet', desc: 'Empowerment Strategy' }
   ],
   villages: [
+    gallery002Images[13], // Super cane 001
+    gallery002Images[15], // Nano urea 002
     { src: `${basePath}1(3).jpg`, title: 'Village Survey', desc: 'Field Inspection' },
     { src: `${basePath}2(3).jpg`, title: 'Water Conservation Site', desc: 'Check Dam Project' },
     { src: `${basePath}3(3).jpg`, title: 'Soybean Trial Plot', desc: 'Crop Yield Inspection' },
@@ -260,27 +302,32 @@ function initPortfolio() {
 
   if (!portfolioGrid) return;
 
+  // Curated Highlights selection for Homepage
+  const homepageHighlights = [
+    gallery002Images[0],  // Bumper crop of Soyabean
+    gallery002Images[1],  // Dragon fruit & Grapes intercropping
+    gallery002Images[12], // Super cane nursery
+    gallery002Images[7],  // Jayakar Vyakhyanmala
+    portfolioImages.scientists[0], // Agricultural Scientists Interaction
+    portfolioImages.citizens[0]     // Senior Citizen Forum
+  ];
+
   const renderPortfolio = (category) => {
     portfolioGrid.innerHTML = '';
     
     let images = [];
     if (category === 'all') {
-      images = [
-        ...portfolioImages.scientists,
-        ...portfolioImages.education.slice(0, 3),
-        ...portfolioImages.citizens.slice(0, 3),
-        ...portfolioImages.villagers.slice(0, 3),
-        ...portfolioImages.villages.slice(0, 3)
-      ];
+      images = homepageHighlights;
     } else {
-      images = portfolioImages[category] || [];
+      images = (portfolioImages[category] || []).slice(0, 6);
     }
 
-    images.forEach(img => {
+    images.forEach((img, idx) => {
       const item = document.createElement('div');
       item.className = 'portfolio-item';
       item.setAttribute('data-src', img.src);
       item.setAttribute('data-title', img.title);
+      item.setAttribute('data-desc', img.desc);
       item.innerHTML = `
         <img src="${img.src}" alt="${img.title}" loading="lazy">
         <div class="portfolio-overlay">
@@ -293,8 +340,7 @@ function initPortfolio() {
       portfolioGrid.appendChild(item);
     });
 
-    // Re-bind Lightbox events to new elements
-    bindLightboxEvents();
+    bindLightboxEvents(portfolioGrid, images);
   };
 
   filterBtns.forEach(btn => {
@@ -305,69 +351,302 @@ function initPortfolio() {
     });
   });
 
-  // Render all initially
   renderPortfolio('all');
 }
 
 /* -------------------------------------------------------------
- * LIGHTBOX MODAL SYSTEM
+ * FULL DEDICATED GALLERY PAGE LOGIC
+ * ------------------------------------------------------------- */
+function initFullGalleryPage() {
+  const fullGrid = document.getElementById('fullGalleryGrid');
+  const searchInput = document.getElementById('gallerySearch');
+  const filterBtns = document.querySelectorAll('.gallery-page-filter .filter-btn');
+  const photoCountEl = document.getElementById('photoCountDisplay');
+
+  if (!fullGrid) return;
+
+  let currentCategory = 'all';
+  let currentSearch = '';
+
+  const getAllUniqueImages = () => {
+    const list = [
+      ...gallery002Images,
+      ...portfolioImages.scientists,
+      ...portfolioImages.education,
+      ...portfolioImages.citizens,
+      ...portfolioImages.villagers,
+      ...portfolioImages.villages
+    ];
+    const seen = new Set();
+    return list.filter(img => {
+      if (seen.has(img.src)) return false;
+      seen.add(img.src);
+      return true;
+    });
+  };
+
+  const renderFullGallery = () => {
+    fullGrid.innerHTML = '';
+    
+    let images = [];
+    if (currentCategory === 'all') {
+      images = getAllUniqueImages();
+    } else {
+      images = portfolioImages[currentCategory] || [];
+    }
+
+    if (currentSearch.trim() !== '') {
+      const q = currentSearch.toLowerCase();
+      images = images.filter(img => 
+        img.title.toLowerCase().includes(q) || img.desc.toLowerCase().includes(q)
+      );
+    }
+
+    if (photoCountEl) {
+      photoCountEl.textContent = `Showing ${images.length} photos`;
+    }
+
+    if (images.length === 0) {
+      fullGrid.innerHTML = `
+        <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--color-text-muted);">
+          <h4>No matching photos found</h4>
+          <p>Try clearing your search or picking a different category filter.</p>
+        </div>
+      `;
+      return;
+    }
+
+    images.forEach(img => {
+      const item = document.createElement('div');
+      item.className = 'portfolio-item';
+      item.setAttribute('data-src', img.src);
+      item.setAttribute('data-title', img.title);
+      item.setAttribute('data-desc', img.desc);
+      item.innerHTML = `
+        <img src="${img.src}" alt="${img.title}" loading="lazy">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <h5>${img.title}</h5>
+            <span>${img.desc}</span>
+          </div>
+        </div>
+      `;
+      fullGrid.appendChild(item);
+    });
+
+    bindLightboxEvents(fullGrid, images);
+  };
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentCategory = btn.getAttribute('data-filter');
+      renderFullGallery();
+    });
+  });
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      currentSearch = e.target.value;
+      renderFullGallery();
+    });
+  }
+
+  renderFullGallery();
+}
+
+/* -------------------------------------------------------------
+ * PROFESSIONAL LIGHTBOX MODAL SYSTEM (PREV/NEXT/FULLSCREEN)
  * ------------------------------------------------------------- */
 let lightboxModal;
 let lightboxImg;
-let lightboxCaption;
+let lightboxTitle;
+let lightboxDesc;
+let lightboxCounter;
+let currentLightboxList = [];
+let currentLightboxIndex = 0;
 
 function initLightbox() {
-  // Create Modal element programmatically
+  // Fancybox 5 handles modal lifecycle automatically.
+  // Fallback modal element is initialized lazily if Fancybox is unavailable.
+}
+
+function bindLightboxEvents(container, imageList) {
+  if (!container || !imageList) return;
+  const items = container.querySelectorAll('.portfolio-item');
+  items.forEach((item, index) => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (window.Fancybox) {
+        const fancyboxItems = imageList.map(img => ({
+          src: img.src,
+          caption: `<strong>${img.title}</strong><br><span style="color: #cbd5e1; font-size: 0.88rem; font-weight: 400;">${img.desc}</span>`
+        }));
+        
+        Fancybox.show(fancyboxItems, {
+          startIndex: index,
+          Toolbar: {
+            display: {
+              left: ["infobar"],
+              middle: [],
+              right: ["slideshow", "fullscreen", "thumbs", "close"]
+            }
+          },
+          Images: {
+            zoom: true
+          }
+        });
+      } else {
+        openLightbox(imageList, index);
+      }
+    });
+  });
+}
+
+function createFallbackModal() {
+  if (lightboxModal) return;
   lightboxModal = document.createElement('div');
   lightboxModal.className = 'modal';
   lightboxModal.id = 'lightboxModal';
   lightboxModal.innerHTML = `
+    <div class="modal-header-bar">
+      <div class="modal-counter" id="lightboxCounter">1 / 1</div>
+      <div class="modal-actions">
+        <button class="modal-action-btn" id="lightboxFullscreen" title="Toggle Fullscreen (F)">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
+          </svg>
+        </button>
+        <button class="modal-action-btn" id="lightboxClose" title="Close (Esc)">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <button class="modal-nav-btn modal-nav-prev" id="lightboxPrev" title="Previous (Left Arrow)">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path d="M15 19l-7-7 7-7"/>
+      </svg>
+    </button>
+
+    <button class="modal-nav-btn modal-nav-next" id="lightboxNext" title="Next (Right Arrow)">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path d="M9 5l7 7-7 7"/>
+      </svg>
+    </button>
+
     <div class="modal-content-container">
-      <button class="modal-close" id="lightboxClose">&times;</button>
-      <img src="" alt="" class="modal-img" id="lightboxImg">
-      <div class="modal-caption" id="lightboxCaption"></div>
+      <div class="modal-img-wrapper">
+        <img src="" alt="" class="modal-img" id="lightboxImg">
+      </div>
+      <div class="modal-caption-box">
+        <div class="modal-caption-title" id="lightboxTitle"></div>
+        <div class="modal-caption-desc" id="lightboxDesc"></div>
+      </div>
     </div>
   `;
   document.body.appendChild(lightboxModal);
 
   lightboxImg = document.getElementById('lightboxImg');
-  lightboxCaption = document.getElementById('lightboxCaption');
+  lightboxTitle = document.getElementById('lightboxTitle');
+  lightboxDesc = document.getElementById('lightboxDesc');
+  lightboxCounter = document.getElementById('lightboxCounter');
 
   const closeBtn = document.getElementById('lightboxClose');
+  const prevBtn = document.getElementById('lightboxPrev');
+  const nextBtn = document.getElementById('lightboxNext');
+  const fullscreenBtn = document.getElementById('lightboxFullscreen');
+
   closeBtn.addEventListener('click', closeLightbox);
+  prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrevLightboxImage(); });
+  nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNextLightboxImage(); });
+  fullscreenBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleFullscreen(); });
+
   lightboxModal.addEventListener('click', (e) => {
-    if (e.target === lightboxModal) closeLightbox();
+    if (e.target === lightboxModal || e.target.classList.contains('modal-content-container')) {
+      closeLightbox();
+    }
   });
 
-  // Bind close on ESC key
   window.addEventListener('keydown', (e) => {
+    if (!lightboxModal.classList.contains('active')) return;
     if (e.key === 'Escape') closeLightbox();
+    else if (e.key === 'ArrowRight') showNextLightboxImage();
+    else if (e.key === 'ArrowLeft') showPrevLightboxImage();
+    else if (e.key === 'f' || e.key === 'F') toggleFullscreen();
   });
 }
 
-function bindLightboxEvents() {
-  const triggerElements = document.querySelectorAll('.portfolio-item, .lightbox-trigger');
-  triggerElements.forEach(elem => {
-    elem.addEventListener('click', () => {
-      const src = elem.getAttribute('data-src');
-      const title = elem.getAttribute('data-title') || '';
-      openLightbox(src, title);
-    });
-  });
-}
+function openLightbox(imageList, startIndex) {
+  createFallbackModal();
+  if (!lightboxModal || !imageList || imageList.length === 0) return;
 
-function openLightbox(src, title) {
-  if (!lightboxModal || !lightboxImg) return;
-  lightboxImg.src = src;
-  lightboxCaption.textContent = title;
+  currentLightboxList = imageList;
+  currentLightboxIndex = startIndex >= 0 && startIndex < imageList.length ? startIndex : 0;
+
+  updateLightboxDisplay();
   lightboxModal.classList.add('active');
-  document.body.style.overflow = 'hidden'; // Lock background scroll
+  document.body.style.overflow = 'hidden';
+}
+
+function updateLightboxDisplay() {
+  if (currentLightboxList.length === 0) return;
+  const imgData = currentLightboxList[currentLightboxIndex];
+
+  lightboxImg.style.opacity = '0';
+  lightboxImg.style.transform = 'scale(0.96)';
+
+  setTimeout(() => {
+    lightboxImg.src = imgData.src;
+    lightboxImg.alt = imgData.title;
+    lightboxTitle.textContent = imgData.title;
+    lightboxDesc.textContent = imgData.desc;
+    lightboxCounter.textContent = `${currentLightboxIndex + 1} / ${currentLightboxList.length}`;
+    
+    lightboxImg.style.opacity = '1';
+    lightboxImg.style.transform = 'scale(1)';
+  }, 100);
+
+  const prevBtn = document.getElementById('lightboxPrev');
+  const nextBtn = document.getElementById('lightboxNext');
+  if (prevBtn && nextBtn) {
+    prevBtn.style.display = currentLightboxList.length > 1 ? 'flex' : 'none';
+    nextBtn.style.display = currentLightboxList.length > 1 ? 'flex' : 'none';
+  }
+}
+
+function showNextLightboxImage() {
+  if (currentLightboxList.length <= 1) return;
+  currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxList.length;
+  updateLightboxDisplay();
+}
+
+function showPrevLightboxImage() {
+  if (currentLightboxList.length <= 1) return;
+  currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxList.length) % currentLightboxList.length;
+  updateLightboxDisplay();
+}
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    lightboxModal.requestFullscreen().catch(err => console.error(err));
+  } else {
+    document.exitFullscreen().catch(err => console.error(err));
+  }
 }
 
 function closeLightbox() {
   if (!lightboxModal) return;
   lightboxModal.classList.remove('active');
-  document.body.style.overflow = ''; // Unlock background scroll
+  document.body.style.overflow = '';
+  if (document.fullscreenElement) {
+    document.exitFullscreen().catch(() => {});
+  }
 }
 
 /* -------------------------------------------------------------
