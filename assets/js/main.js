@@ -223,7 +223,7 @@ const gallery002Images = [
   { src: `${gallery002Path}नॅनो युरिया नॅनो डीएपी डिमॉन्स्ट्रेशन प्लॉट 001.png`, title: 'Nano Urea & Nano DAP Trial', desc: 'Demonstration Plot (01)' },
   { src: `${gallery002Path}नॅनो युरिया नॅनो डीएपी डिमॉन्स्ट्रेशन प्लॉट 002.png`, title: 'Nano Fertilizer Crop Results', desc: 'Demonstration Plot (02)' },
   { src: `${gallery002Path}Punyashlok Ahilya Devi Holkar Vyakhyanmala Feb 2026 002.png`, title: 'Ahilya Devi Holkar Vyakhyanmala', desc: 'Women College Lecture (Feb 2026)' },
-  { src: `${gallery002Path}विद्यार्थ्यांसाठी सावित्रीबाई फुले पुणे विद्यापीठ यांच्या सह योगाने  यशवंतराव चव्हाण व्याख्यानमाला जानेवारी 2026.png`, title: 'Yashwantrao Chavan Vyakhyanmala', desc: 'SPPU Youth Seminar (Jan 2026)' }
+  { src: `${gallery002Path}yashwantrao_chavan_vyakhyanmala_jan_2026.png`, title: 'Yashwantrao Chavan Vyakhyanmala', desc: 'SPPU Youth Seminar (Jan 2026)' }
 ];
 
 const portfolioImages = {
