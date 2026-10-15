@@ -206,23 +206,23 @@ const basePath = './assets/images/';
 const gallery002Path = `${basePath}gallery002/`;
 
 const gallery002Images = [
-  { src: `${gallery002Path}Bumper crop of Soyabean using Soya Sanjivani.png`, title: 'Bumper Crop of Soyabean', desc: 'Soya Sanjivani Demonstration Plot' },
-  { src: `${gallery002Path}Demonstration of intercrop farming using Dragon Fruit and Grapes at Jat dist Sangali.png`, title: 'Dragon Fruit & Grapes Intercropping', desc: 'Jat Dist. Sangli Demonstration' },
-  { src: `${gallery002Path}Sugarcane sanjivani.png`, title: 'Sugarcane Sanjivani Trial', desc: 'Sustainable Sugarcane Farming' },
+  { src: `${gallery002Path}soyabean_soya_sanjivani.png`, title: 'Bumper Crop of Soyabean', desc: 'Soya Sanjivani Demonstration Plot' },
+  { src: `${gallery002Path}dragon_fruit_grapes_intercrop_jat.png`, title: 'Dragon Fruit & Grapes Intercropping', desc: 'Jat Dist. Sangli Demonstration' },
+  { src: `${gallery002Path}sugarcane_sanjivani.png`, title: 'Sugarcane Sanjivani Trial', desc: 'Sustainable Sugarcane Farming' },
   { src: `${gallery002Path}groupphoto.png`, title: 'IRDE Team & Farmer Delegation', desc: 'Field Workshop & Group Session' },
   { src: `${gallery002Path}poster.png`, title: 'IRDE Rural Extension Services', desc: 'Educational & Agricultural Initiatives' },
-  { src: `${gallery002Path}जेष्ठ नागरीक विख्यान माला मार्च 2025 001.png`, title: 'Jyeshtha Nagarik Vyakhyanmala', desc: 'Senior Citizen Lecture Series (March 2025)' },
-  { src: `${gallery002Path}जेष्ठ नागरीक विख्यान माला मार्च 2025 002.png`, title: 'Senior Citizen Interactive Session', desc: 'Jyeshtha Nagarik Program (March 2025)' },
-  { src: `${gallery002Path}डॉ बाबासाहेब जयकर व्याख्यानमाला  नोव्हेंबर 2024 007.png`, title: 'Dr. Babasaheb Jayakar Vyakhyanmala', desc: 'SPPU Extra-Mural Lecture (Nov 2024)' },
-  { src: `${gallery002Path}डॉ बाबासाहेब जयकर व्याख्यानमाला  नोव्हेंबर 2024. 001.png`, title: 'Dr. Jayakar Seminar Address', desc: 'Rural Education Drive (Nov 2024)' },
-  { src: `${gallery002Path}डॉ बाबासाहेब जयकर व्याख्यानमाला  नोव्हेंबर 2024. 003.png`, title: 'Dr. Jayakar Student Interactive Session', desc: 'SPPU Collaboration (Nov 2024)' },
-  { src: `${gallery002Path}डॉ बाबासाहेब जयकर व्याख्यानमाला  नोव्हेंबर 2024. 004.png`, title: 'Dignitaries at Jayakar Seminar', desc: 'Extra-Mural Studies (Nov 2024)' },
-  { src: `${gallery002Path}डॉ बाबासाहेब जयकर व्याख्यानमाला  नोव्हेंबर 2024. 006.png`, title: 'Jayakar Lecture Gathering', desc: 'Community Knowledge Drive (Nov 2024)' },
-  { src: `${gallery002Path}डॉ. जमदग्नी यांनी सुपर केन नर्सरी तंत्रज्ञानाने तयार केलेली उसाची रोपे 002.png`, title: 'Super Cane Nursery Seedlings', desc: 'Tech Demo by Dr. Jamadagni (02)' },
-  { src: `${gallery002Path}डॉ. जमदग्नी यांनी सुपर केन नर्सरी तंत्रज्ञानाने तयार केलेली उसाची रोपे001.png`, title: 'Super Cane Nursery Seedlings', desc: 'Tech Demo by Dr. Jamadagni (01)' },
-  { src: `${gallery002Path}नॅनो युरिया नॅनो डीएपी डिमॉन्स्ट्रेशन प्लॉट 001.png`, title: 'Nano Urea & Nano DAP Trial', desc: 'Demonstration Plot (01)' },
-  { src: `${gallery002Path}नॅनो युरिया नॅनो डीएपी डिमॉन्स्ट्रेशन प्लॉट 002.png`, title: 'Nano Fertilizer Crop Results', desc: 'Demonstration Plot (02)' },
-  { src: `${gallery002Path}Punyashlok Ahilya Devi Holkar Vyakhyanmala Feb 2026 002.png`, title: 'Ahilya Devi Holkar Vyakhyanmala', desc: 'Women College Lecture (Feb 2026)' },
+  { src: `${gallery002Path}jyeshtha_nagarik_vyakhyanmala_mar_2025_001.png`, title: 'Jyeshtha Nagarik Vyakhyanmala', desc: 'Senior Citizen Lecture Series (March 2025)' },
+  { src: `${gallery002Path}jyeshtha_nagarik_vyakhyanmala_mar_2025_002.png`, title: 'Senior Citizen Interactive Session', desc: 'Jyeshtha Nagarik Program (March 2025)' },
+  { src: `${gallery002Path}jayakar_vyakhyanmala_nov_2024_007.png`, title: 'Dr. Babasaheb Jayakar Vyakhyanmala', desc: 'SPPU Extra-Mural Lecture (Nov 2024)' },
+  { src: `${gallery002Path}jayakar_vyakhyanmala_nov_2024_001.png`, title: 'Dr. Jayakar Seminar Address', desc: 'Rural Education Drive (Nov 2024)' },
+  { src: `${gallery002Path}jayakar_vyakhyanmala_nov_2024_003.png`, title: 'Dr. Jayakar Student Interactive Session', desc: 'SPPU Collaboration (Nov 2024)' },
+  { src: `${gallery002Path}jayakar_vyakhyanmala_nov_2024_004.png`, title: 'Dignitaries at Jayakar Seminar', desc: 'Extra-Mural Studies (Nov 2024)' },
+  { src: `${gallery002Path}jayakar_vyakhyanmala_nov_2024_006.png`, title: 'Jayakar Lecture Gathering', desc: 'Community Knowledge Drive (Nov 2024)' },
+  { src: `${gallery002Path}super_cane_nursery_jamadagni_002.png`, title: 'Super Cane Nursery Seedlings', desc: 'Tech Demo by Dr. Jamadagni (02)' },
+  { src: `${gallery002Path}super_cane_nursery_jamadagni_001.png`, title: 'Super Cane Nursery Seedlings', desc: 'Tech Demo by Dr. Jamadagni (01)' },
+  { src: `${gallery002Path}nano_urea_dap_demo_001.png`, title: 'Nano Urea & Nano DAP Trial', desc: 'Demonstration Plot (01)' },
+  { src: `${gallery002Path}nano_urea_dap_demo_002.png`, title: 'Nano Fertilizer Crop Results', desc: 'Demonstration Plot (02)' },
+  { src: `${gallery002Path}ahilya_devi_holkar_vyakhyanmala_feb_2026_002.png`, title: 'Ahilya Devi Holkar Vyakhyanmala', desc: 'Women College Lecture (Feb 2026)' },
   { src: `${gallery002Path}yashwantrao_chavan_vyakhyanmala_jan_2026.png`, title: 'Yashwantrao Chavan Vyakhyanmala', desc: 'SPPU Youth Seminar (Jan 2026)' }
 ];
 
